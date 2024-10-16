@@ -4,7 +4,6 @@ import Topbar from "@/components/Topbar";
 export default async function Layout({ children }) {
   return (
     <div className="flex h-dvh ">
-      {" "}
       {/* Sidebar | Left */}
       <Sidebar />
       {/* Main content | Right */}
