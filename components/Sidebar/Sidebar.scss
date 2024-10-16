@@ -1,0 +1,152 @@
+$sidebar-width: 300px;
+
+.sidebar {
+  padding: 36px 28px;
+  width: calc(80px + (28px * 2));
+  height: 100dvh;
+
+  border-right: 1px solid;
+  border-color: hsl(var(--border));
+
+  transition: 0.3s ease-out;
+  position: relative;
+  z-index: 5;
+
+  @apply bg-background max-md:hidden;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+
+    height: 100%;
+    transition: 0.2s ease-out;
+  }
+
+  .logo {
+    h3 {
+      display: none;
+      opacity: 0;
+      transition: 0.2s ease-out;
+    }
+  }
+
+  .navlink {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: fit-content;
+    padding: 10px 16px;
+    border-radius: 8px;
+
+    transition: 0.2s ease-out;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    .text {
+      font-size: 20px;
+      @apply font-medium;
+      display: none;
+      opacity: 0;
+      transition: all 0.2s ease-out;
+    }
+
+    &.active,
+    &:hover {
+      @apply bg-green-100 dark:bg-gray-700;
+    }
+  }
+
+  #logout {
+    @apply text-red-700 dark:text-red-400;
+
+    &.active,
+    &:hover {
+      @apply bg-red-100 dark:bg-red-700/40;
+    }
+  }
+
+  .menu-toggle-wrap {
+    display: flex;
+    justify-content: flex-end;
+
+    position: absolute;
+
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    transition: 0.2s ease-out;
+
+    .menu-toggle {
+      transition: 0.2s ease-out;
+
+      svg {
+        transition: 0.2s ease-out;
+      }
+
+      &:hover {
+        svg {
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+
+  .top-links,
+  .bottom-links {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    justify-content: space-between;
+
+    height: 100%;
+  }
+
+  &.is-expanded {
+    transition: 0.3s ease-out;
+    width: $sidebar-width;
+
+    .inner {
+      align-items: initial;
+      transition: 0.2s ease-out;
+    }
+
+    .logo {
+      h3 {
+        display: block;
+        opacity: 1;
+      }
+    }
+
+    .navlink {
+      width: 100%;
+    }
+
+    .text {
+      display: inline;
+      opacity: 1;
+    }
+
+    .menu-toggle-wrap {
+      left: 0;
+      right: 0;
+      transform: translateX(0);
+
+      .menu-toggle {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
